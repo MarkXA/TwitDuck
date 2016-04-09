@@ -214,7 +214,7 @@
 		</Grid.ColumnDefinitions>
 		<Grid Grid.Column="0" x:Name="MeasureGrid">
 			<Grid x:Name="ZoomGrid">
-				<WebView Source="https://tweetdeck.twitter.com/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+				<WebView Source="https://tweetdeck.twitter.com/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationCompleted="Navigated">
 					<WebView.RenderTransform>
 						<ScaleTransform x:Name="ZoomTransform" ScaleX="1.0" ScaleY="1.0" />
 					</WebView.RenderTransform>

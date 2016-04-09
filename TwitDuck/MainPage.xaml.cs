@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reactive.Linq;
 using Windows.Storage;
 using Windows.UI.Xaml;
@@ -56,6 +57,15 @@ namespace TwitDuck
 			ZoomGrid.Width = MeasureGrid.ActualWidth / actualZoom;
 			ZoomGrid.Height = MeasureGrid.ActualHeight / actualZoom;
 			ZoomTransform.ScaleX = ZoomTransform.ScaleY = actualZoom;
+		}
+
+		private async void Navigated(WebView sender, WebViewNavigationCompletedEventArgs args)
+		{
+			await sender.InvokeScriptAsync("eval", new[] { @"
+				var styleNode = document.createElement('style');
+				styleNode.innerHTML = '.column-scroller { padding-right:12px } .column-scroller:hover { padding-right:0 }';
+				document.body.appendChild(styleNode);
+			" });
 		}
 	}
 }
